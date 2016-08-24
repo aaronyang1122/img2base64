@@ -1,1 +1,1 @@
-把图片转换成base64，利用canvas
+鎶婂浘鐗囪浆鎹㈡垚base64 涓昏鍒╃敤canvas
