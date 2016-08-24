@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+			function convertImgToBase64(url, callback, outputFormat){
+	    var canvas = document.createElement('CANVAS'),
+        ctx = canvas.getContext('2d'),
+        img = new Image;
+	    	img.crossOrigin = 'Anonymous';
+	    	img.src = url;
+		    img.onload = function(){
+//	      canvas.height = img.height;
+//	      canvas.width = img.width/10;
+					/* drawImage 语法 */
+					//void ctx.drawImage(image, dx, dy);
+					//void ctx.drawImage(image, dx, dy, dWidth, dHeight);
+					//void ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+	        ctx.drawImage(img,0,0);
+	        var dataURL = canvas.toDataURL(outputFormat || 'image/png');
+	        callback.call(this, dataURL);
+	        canvas = null; 
+		    };
+			}
+			
+			convertImgToBase64('http://static.geetest.com/pictures/gt/d0ecb1510/bg/9801f0a3.webp', function(base64Img){
+			    var _img = document.createElement('img');
+			    _img.src = base64Img;
+			    document.querySelector('body').appendChild(_img);
+			});
+			//img.src = "test/lib/img/class-type-bg.png";
+		</script>
+	</body>
+</html>
